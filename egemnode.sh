@@ -353,6 +353,12 @@ dir_go_egem="${HOME}/go-egem"
 
 servicefile="egem.service"
 
+# Check if we are running as root.
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root."
+   exit 1
+fi
+
 cd ${HOME}
 
 while true
